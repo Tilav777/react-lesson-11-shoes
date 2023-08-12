@@ -3,17 +3,41 @@ import data from '../data/data'
 import { v4 as uuidv4 } from 'uuid'
 import { Context } from './context/Context'
 import { useState } from 'react'
+import { Routes, Route } from 'react-router-dom'
 
 
 // Components
-import Card from './components/card/Card'
-import Header from './components/header/Header'
-import SearchBtn from './components/searchBtn/SearchBtn'
+import WebRigth from './components/web-right/WebRigth'
+import Likes from './components/likes/Likes'
 import Sitebar from './components/sitebar/Sitebar'
 
 function App() {
 
   const [datas, setData] = useState(data)
+  const [likesData, setLikesData] = useState(data)
+
+  function handleLikes(id) {
+      setLikesData(prev => {
+        return prev.map(like => {
+          if(like.id === id) {
+            return {...like, isLike: !like.isLike}
+          }else {
+            return like
+          }
+        })
+      })
+  }
+
+  function likesCount() {
+    let count = 0
+    likesData.forEach(like => {
+      if(like.isLike) {
+        count++
+      }
+    })
+    return count
+  }
+
   
   function hendleChange(e) {
     setData(() => {
@@ -98,18 +122,17 @@ function App() {
   ])
 
   return (
-    <Context.Provider value={{datas, hendleChange, clickBtn, searchBtn}}>
+    <Context.Provider value={{datas, hendleChange, clickBtn, searchBtn, handleLikes, likesData, likesCount}}>
       <div className="web-left">
         <h3>🛒</h3>
         <Sitebar title={'Category'} inpName={['All', 'Sneakers', 'Flats', 'Sandals', 'Heels']} sitebarLength={5} vName={'category'}/>
-        <Sitebar title={'Price'} inpName={['All', '$0-$50', '$50-$100', '$100-$150', 'Over $150']} sitebarLength={5} vName={'category'}/>
-        <Sitebar title={'Colors'} inpName={['All', 'Black', 'Blue', 'Red', 'Green', 'White']} sitebarLength={6} vName={'category'}/>
+        <Sitebar title={'Price'} inpName={['All', '$0-$50', '$50-$100', '$100-$150', 'Over $150']} sitebarLength={5} vName={'price'}/>
+        <Sitebar title={'Colors'} inpName={['All', 'Black', 'Blue', 'Red', 'Green', 'White']} sitebarLength={6} vName={'colors'}/>
       </div>
-      <div className="web-right">
-        <Header />
-        <SearchBtn />
-        <Card />
-      </div>
+      <Routes>
+        <Route path='/' element={<WebRigth />}/>
+        <Route path='/likes' element={<Likes />}/>
+      </Routes>
     </Context.Provider>
   )
 }

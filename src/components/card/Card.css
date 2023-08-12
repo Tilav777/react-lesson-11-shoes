@@ -16,6 +16,18 @@
     transition: .5s;
 }
 
+.card > .heart-btn {
+    width: max-content;
+    height: max-content;
+    color: #ededed;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.card > .heart-btn i {
+    font-size: 24px;
+}
 
 .card:hover {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
