@@ -22,6 +22,12 @@
     padding: 20px;
     width: 450px;
     gap: 30px;
+    transition: .5s;
+    cursor: pointer;
+}
+
+.likes-card:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
 .likes-card button {

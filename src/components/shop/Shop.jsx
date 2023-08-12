@@ -1,21 +1,19 @@
-import './Likes.css'
-import { Context } from '../../context/Context'
-import { useContext } from 'react'
+import { Context } from "../../context/Context"
+import { useContext } from "react"
 
-function Likes() {
+function Shop() {
 
-    const { likesData, handleLikes } = useContext(Context)
+    const {shopData, deleteShop} = useContext(Context)
 
   return (
     <div className='likes-container'>
-        <h1>Likes</h1>
+        <h1>Purchases</h1>
         <div className='likes-page'>
             {
-                likesData.map(likes => {
-                    if(likes.isLike) {
+                shopData.map(likes => {
                         return (
                             <div key={likes.id} className='likes-card'>
-                                <button onClick={() => handleLikes(likes.id)}><i className="bi bi-trash3-fill"></i></button>
+                                <button onClick={() => deleteShop(likes.id)}><i className="bi bi-trash3-fill"></i></button>
                                 <img src={likes.img} alt={likes.title} />
                                 <div className="likes-card__head">
                                     <h2>{likes.title}</h2>
@@ -23,7 +21,6 @@ function Likes() {
                                 </div>
                             </div>
                         )
-                    }
                 })
             }
         </div>
@@ -31,4 +28,4 @@ function Likes() {
   )
 }
 
-export default Likes
+export default Shop

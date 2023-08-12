@@ -4,6 +4,7 @@ import { v4 as uuidv4 } from 'uuid'
 import { Context } from './context/Context'
 import { useState } from 'react'
 import { Routes, Route } from 'react-router-dom'
+import Shop from './components/shop/Shop'
 
 
 // Components
@@ -15,6 +16,7 @@ function App() {
 
   const [datas, setData] = useState(data)
   const [likesData, setLikesData] = useState(data)
+  const [shopData, setShopData] = useState([])
 
   function handleLikes(id) {
       setLikesData(prev => {
@@ -34,6 +36,30 @@ function App() {
       if(like.isLike) {
         count++
       }
+    })
+    return count
+  }
+
+  function handleShop(id) {
+    data.forEach(item => {
+      if(item.id === id) {
+        setShopData(prev => {
+          return [...prev, item]
+        })
+      }
+    })
+  }
+
+  function deleteShop(id) {
+    setShopData(prev => {
+      return prev.filter(item => item.id!== id)
+    })
+  }
+
+  function shopCount() {
+    let count = 0
+    shopData.forEach(() => {
+      count++
     })
     return count
   }
@@ -122,7 +148,7 @@ function App() {
   ])
 
   return (
-    <Context.Provider value={{datas, hendleChange, clickBtn, searchBtn, handleLikes, likesData, likesCount}}>
+    <Context.Provider value={{datas, hendleChange, clickBtn, searchBtn, handleLikes, likesData, likesCount, handleShop, shopCount, shopData, deleteShop}}>
       <div className="web-left">
         <h3>🛒</h3>
         <Sitebar title={'Category'} inpName={['All', 'Sneakers', 'Flats', 'Sandals', 'Heels']} sitebarLength={5} vName={'category'}/>
@@ -132,6 +158,7 @@ function App() {
       <Routes>
         <Route path='/' element={<WebRigth />}/>
         <Route path='/likes' element={<Likes />}/>
+        <Route path='/purchases' element={<Shop />} />
       </Routes>
     </Context.Provider>
   )

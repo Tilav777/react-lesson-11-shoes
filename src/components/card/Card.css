@@ -45,6 +45,16 @@
     align-items: center;
 }
 
+.card > div > button {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.card > div > button i {
+    font-size: 24px;
+}
+
 .card > h3, .card > span {
     margin-bottom: 20px;
 }
