@@ -102,6 +102,8 @@ function App() {
       <div className="web-left">
         <h3>🛒</h3>
         <Sitebar title={'Category'} inpName={['All', 'Sneakers', 'Flats', 'Sandals', 'Heels']} sitebarLength={5} vName={'category'}/>
+        <Sitebar title={'Price'} inpName={['All', '$0-$50', '$50-$100', '$100-$150', 'Over $150']} sitebarLength={5} vName={'category'}/>
+        <Sitebar title={'Colors'} inpName={['All', 'Black', 'Blue', 'Red', 'Green', 'White']} sitebarLength={6} vName={'category'}/>
       </div>
       <div className="web-right">
         <Header />
