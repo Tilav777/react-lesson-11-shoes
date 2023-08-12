@@ -1,0 +1,38 @@
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 18%;
+}
+
+.card {
+    border: 2px solid #ededed;
+    width: 240px;
+    margin: 20px;
+    padding: 20px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: .5s;
+}
+
+
+.card:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.card img{
+    width: 200px;
+    height: 120px;
+    margin-bottom: 40px;
+}
+
+.card > div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card > h3, .card > span {
+    margin-bottom: 20px;
+}

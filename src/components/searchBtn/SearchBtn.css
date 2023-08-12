@@ -1,0 +1,23 @@
+.search-btns__container {
+    display: flex;
+    gap: 20px;
+    padding: 20px 0;
+}
+.search-btns {
+    margin-left: 18%;
+    padding: 20px 0;
+
+}
+
+.search-btns__container button {
+    padding: 10px 20px;
+    border: 1px solid #ededed;
+    background-color: #fff;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.search-btns__container .active {
+    background-color: #000;
+    color: #fff;
+}
